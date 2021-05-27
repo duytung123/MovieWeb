@@ -35,13 +35,11 @@ class LoginController extends Controller
     }
     public function getUser(Request $request)
     {
-       $user = Auth::user();
-
-        if ($user) {
-            return response([$user], Response::HTTP_OK);
+        $user = Auth::user();
+        if($user){
+            return response()->json([$user],200);
         }
-
-        return response(null, Response::HTTP_BAD_REQUEST);
+        return response()->json(['message'=>"fails",200]);
     }
 
 }
